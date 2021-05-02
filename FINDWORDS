@@ -1,24 +1,24 @@
 #include <iostream>
 #include <cstring>
-
+#include <algorithm>
 using namespace std;
-const int cols = 16, rows = 15;
 
+const int cols = 16, rows = 15;
  char words[rows][cols] = {"tgbwwinterwsesn",
-                                "aaunttmmhfoodnb",
-                                "jlwcqldzmpmvdmr",
-                                "asagmquwvvbsohi",
-                                "bwplotanadtpgnc",
-                                "rewngodjcpnatnk",
-                                "eeotwosbqharrsa",
-                                "azcgeswewnaknpb",
-                                "dinnerqodlwdcar",
-                                "onopkwmparktzcc",
-                                "qbfrogmamwpweey",
-                                "lqzqnnmrzjjsclg",
-                                "mosgzczetdbooto",
-                                "pdcrzmsngrdnrpz",
-                                "ohnkzwaterjgtra"};
+                        	"aaunttmmhfoodnb",
+                            "jlwcqldzmpmvdmr",
+                            "asagmquwvvbsohi",
+                            "bwplotanadtpgnc",
+                            "rewngodjcpnatnk",
+                            "eeotwosbqharrsa",
+                            "azcgeswewnaknpb",
+                            "dinnerqodlwdcar",
+                            "onopkwmparktzcc",
+                            "qbfrogmamwpweey",
+                            "lqzqnnmrzjjsclg",
+                            "mosgzczetdbooto",
+                            "pdcrzmsngrdnrpz",
+                            "ohnkzwaterjgtra"};
 
 char *getWordVertical(int x);
 char *reverse(char *);
@@ -33,24 +33,17 @@ int main()
     int n;
     cin>>n;
     for (int i=0;i<n;i++){
+    	cin.ignore();
         cin.getline(word,16,'\n');
-        if (searchVertical(word) || searchHorizontal(word))
+        if (searchVertical(word) || revVertikal(word) || searchHorizontal(word) || revHorizontal(word)){
             cout << "Ada\n";
-        else 
-            cout << "Tidak Ada\n";
+        }
+        else{
+           cout << "Tidak Ada\n";
+        }
     }
     return 0;
 }
-
-char *getWordVertical(int x)
-{
-	char kata[15];
- 	for (int i = 0; i < 15; i++)
-    {
-        kata[i] = words[i][x];
-    }
-	return kata;
-};
 
 bool searchVertical(char ketik[])
 {
@@ -59,8 +52,7 @@ bool searchVertical(char ketik[])
 	
 	for (int i = 0; i < 15; i++)
     {
-        kata = getWordVertical(i);
-        cek = strstr(kata, ketik);
+        cek = strstr(words[i], ketik);
         if(cek != NULL){
 	        return true;
 	    }
@@ -99,6 +91,7 @@ bool revVertikal(char ketik[])
     }
     return false;
 }
+
 bool revHorizontal(char ketik[])
 {
 	char *cek;
