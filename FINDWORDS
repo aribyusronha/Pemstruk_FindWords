@@ -20,11 +20,12 @@ const int cols = 16, rows = 15;
                                 "pdcrzmsngrdnrpz",
                                 "ohnkzwaterjgtra"};
 
-char *getWordVertical(int);
+char *getWordVertical(int x);
 char *reverse(char *);
-bool searchVertical(char *);
-bool searchHorizontal(char *);
-
+bool searchVertical(char ketik[]);
+bool searchHorizontal(char ketik[]);
+bool revVertikal(char ketik[]);
+bool revHorizontal(char ketik[]);
 
 int main()
 {
@@ -40,3 +41,13 @@ int main()
     }
     return 0;
 }
+
+char *getWordVertical(int x)
+{
+	char kata[15];
+ 	for (int i = 0; i < 15; i++)
+    {
+        kata[i] = words[i][x];
+    }
+	return kata;
+};
