@@ -82,3 +82,20 @@ bool searchHorizontal(char ketik[])
     }    
     return false;
 }
+
+bool revVertikal(char ketik[])
+{
+	char *cek;
+	char word[rows];
+	for (int i=0;i<sizeof word;i++){
+        for (int j = 0; j < 15; j++){
+            word[j] = words[j][i];
+        }
+        reverse(word, word+strlen(word));
+        cek=strstr(word, ketik);
+        if(cek!= NULL){
+	        return true;
+	    }
+    }
+    return false;
+}
